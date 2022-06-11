@@ -11,6 +11,9 @@ public class PlayerInventory : MonoBehaviour
     public int maxGames =1;
     public static PlayerInventory instance;
     public WinScreen WinScreen;
+    public bool gewonnen = false;
+    public Transform player;
+    public Transform exitPoint;
 
     public void Awake()
     {
@@ -31,9 +34,16 @@ public class PlayerInventory : MonoBehaviour
 
     void Update()
     {
-        if (NumberOfGames >= maxGames)
+      //  Debug.Log(0.5f);
+
+        if (NumberOfGames >= maxGames && gewonnen == false)
         {
-            WinScreen.Setup();
+            if(Vector3.Distance(player.position, exitPoint.position) <= 2.5f)
+            {
+                gewonnen = true;
+                WinScreen.Setup();
+            }
+            
         }
     }
 }

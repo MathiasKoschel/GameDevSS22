@@ -31,6 +31,7 @@ public class PauseMenu : MonoBehaviour
         inGameUI.SetActive(true);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Debug.Log("resume");
     }
 
     public void Pause ()
@@ -39,6 +40,7 @@ public class PauseMenu : MonoBehaviour
         inGameUI.SetActive(false);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Debug.Log("pause");
     }
 
     public void Restart()
@@ -51,5 +53,6 @@ public class PauseMenu : MonoBehaviour
     public void Freeze()
     {
         Time.timeScale = 0f;
+        Debug.Log("freeze");
     }
 }

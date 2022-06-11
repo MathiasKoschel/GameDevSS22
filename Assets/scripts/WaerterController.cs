@@ -20,7 +20,7 @@ public class WaerterController : MonoBehaviour
     public float suchGeschw;
     public double agentSpeed = 1.75;
     public LoseScreen LoseScreen;
-
+    public bool gefunden = false;
 
     public int scanFrequency = AiSensor.scanFrequency;
     float scanInterval = AiSensor.scanInterval;
@@ -121,8 +121,9 @@ public class WaerterController : MonoBehaviour
 
     void Verfolgen()
     {
-        if(playerDistance<= 0.5f)
+        if(playerDistance<= 0.5f && gefunden==false)
         {
+            gefunden = true;
             LoseScreen.Setup("You got caught!");
         }
         agent.speed = 0;

@@ -18,6 +18,8 @@ public class LoseScreen : MonoBehaviour
         pointstext.text = "Games collected: " + PlayerInventory.instance.NumberOfGames.ToString() + "/" + PlayerInventory.instance.maxGames.ToString();
 
         PauseMenu.Freeze();
+
+        Debug.Log("losescreen");
     }
 
 
