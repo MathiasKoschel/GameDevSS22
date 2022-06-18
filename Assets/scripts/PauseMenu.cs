@@ -14,10 +14,10 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused)
+            if (GameIsPaused && pauseMenuUI.activeSelf)
             {
                 Resume();
-            } else
+            } else if (inGameUI.activeSelf)
             {
                 Pause();
             }
@@ -46,7 +46,7 @@ public class PauseMenu : MonoBehaviour
     public void Restart()
     {
         Debug.Log("restart");
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Resume();
     }
 
@@ -54,5 +54,10 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
         Debug.Log("freeze");
+    }
+
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
