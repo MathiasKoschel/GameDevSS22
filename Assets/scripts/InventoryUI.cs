@@ -3,7 +3,7 @@ using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    //private TextMeshProUGUI itemText;
+    
 
     public GameObject pauseMenu;
     public GameObject winscreen;
@@ -13,9 +13,15 @@ public class InventoryUI : MonoBehaviour
     public GameObject ingameUI;
     
     public TextMeshProUGUI itemText;
+    public TextMeshProUGUI anweisungText;
+
+    private string anweisung = "Search the missing CDs";
 
 
-
+    void Awake()
+    {
+        anweisungText.text = anweisung;
+    }
 
 
     // Start is called before the first frame update
@@ -31,11 +37,20 @@ public class InventoryUI : MonoBehaviour
         {
             ingameUI.SetActive(false);
         }
+        
     }
 
     public void UpdateItemText(PlayerInventory playerInventory)
     {
-        itemText.text = "Games gefunden: " + playerInventory.NumberOfGames.ToString() + "/" + playerInventory.maxGames.ToString();
+        itemText.text = "Games found: " + playerInventory.NumberOfGames.ToString() + "/" + playerInventory.maxGames.ToString();
+
+        if (playerInventory.NumberOfGames < playerInventory.maxGames)
+        {
+            anweisungText.text = "Search the missing CDs";
+        }else if (playerInventory.NumberOfGames >= playerInventory.maxGames)
+        {
+            anweisungText.text = "Get out and escape!";
+        }
     }
 
     private bool check()
@@ -52,5 +67,5 @@ public class InventoryUI : MonoBehaviour
        
        
     }
- 
+
 }
