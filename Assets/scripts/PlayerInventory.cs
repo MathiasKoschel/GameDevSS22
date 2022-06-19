@@ -34,11 +34,11 @@ public class PlayerInventory : MonoBehaviour
 
     void Update()
     {
-      //  Debug.Log(0.5f);
+      //  Debug.Log(Vector3.Distance(player.position, exitPoint.position));
 
         if (NumberOfGames >= maxGames && gewonnen == false)
         {
-            if(Vector3.Distance(player.position, exitPoint.position) <= 2.5f)
+            if(Vector3.Distance(player.position, exitPoint.position) <= 2f)
             {
                 gewonnen = true;
                 WinScreen.Setup();

@@ -13,8 +13,8 @@ public class WaerterController : MonoBehaviour
     public int destPoint = 0;
     public Transform goal;
 
-    public float hoerweite = 7f;
-    public float sichtweite = 4f;
+    public float hoerweite = 0.5f;
+ // public float sichtweite = 4f;
     public Transform player;
     public float playerDistance;
     public float suchGeschw;
@@ -43,12 +43,12 @@ public class WaerterController : MonoBehaviour
     void Update()
     {
         playerDistance = Vector3.Distance(player.position, transform.position);
-
+     //   Debug.Log(playerDistance);
         /*scanTimer -= Time.deltaTime;
         if (scanTimer < 0)
         {
             scanTimer += scanInterval;*/
-        if (sensor.ScanForPlayer())
+        if (sensor.ScanForPlayer()| Hoeren())
         {
             LookAtPlayer();
             Verfolgen();
@@ -66,38 +66,6 @@ public class WaerterController : MonoBehaviour
                 GoToNextPoint();
         }
         //}
-
-
-
-
-
-
-        /*
-                if (playerDistance < hoerweite)
-                {
-                    LookAtPlayer();
-                    Debug.Log("Seen");
-                }
-
-                if (playerDistance < hoerweite)
-                {
-                    if (playerDistance > 2f)
-                    {
-                    Verfolgen();
-                    }
-                        else
-                    GoToNextPoint();        
-                }
-
-
-                if (agent.remainingDistance < 0.5f)
-                        GoToNextPoint();    
-
-        
-            if (playerDistance < hoerweite){
-            LookAtPlayer();
-            //Debug.Log("gehört");
-            Verfolgen();*/
 
 
 
@@ -128,5 +96,21 @@ public class WaerterController : MonoBehaviour
         }
         agent.speed = 0;
         transform.Translate(Vector3.forward * suchGeschw * Time.deltaTime);
+    }
+
+    bool Hoeren()
+    {
+        
+        if (playerDistance < hoerweite)
+        {
+            Debug.Log(playerDistance);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+     
+
     }
 }
