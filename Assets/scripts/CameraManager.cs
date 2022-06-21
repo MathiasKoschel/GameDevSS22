@@ -13,6 +13,7 @@ public class CameraManager : MonoBehaviour
     public bool cam1active = false;
 
     public Transform console;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +24,7 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("E pressed");
-            Debug.Log(Vector3.Distance(console.position, transform.position));
-
-            
-        }
+       
 
         if (Vector3.Distance(console.position, transform.position)<=2f && Input.GetKeyDown(KeyCode.E) && securityactive == false)
         {
